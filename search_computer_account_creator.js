@@ -35,6 +35,7 @@ for (var i = 0; i < WScript.Arguments.count(); i++) {
     WScript.Quit(1);
   }
   
+  WScript.Echo(username + " (" + sid + ") joined " + objRecordSet.RecordCount + " computer(s).");
   if (objRecordSet.RecordCount > 0) {
     objRecordSet.MoveFirst;
     while (! objRecordSet.EOF) {
