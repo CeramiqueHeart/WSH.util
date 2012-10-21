@@ -3,6 +3,11 @@ var baseDN;
 var objConnection;
 var objCommand;
 
+if (WScript.Arguments.count() == 0) {
+  WScript.Echo("Usage: " + WScript.ScriptName + " <username1> [username2 ...]");
+  WScript.Quit();
+}
+
 try {
   objRootDSE = GetObject("LDAP://rootDSE");
   baseDN = objRootDSE.Get("defaultNamingContext");
@@ -18,14 +23,9 @@ objConnection.Open     = "Active Directory Provider";
 objCommand = new ActiveXObject("ADODB.Command");
 objCommand.ActiveConnection = objConnection;
 
-if (WScript.Arguments.count() == 0) {
-  WScript.Echo("Usage: " + WScript.ScriptName + " <username1> [username2 ...]");
-  WScript.Quit();
-} else {
-  for (var i = 0; i < WScript.Arguments.count(); i++) {
-    search_computer_account(WScript.Arguments(i));
-    WScript.Echo();
-  }
+for (var i = 0; i < WScript.Arguments.count(); i++) {
+  search_computer_account(WScript.Arguments(i));
+  WScript.Echo();
 }
 
 
