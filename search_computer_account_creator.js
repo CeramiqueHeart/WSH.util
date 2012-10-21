@@ -21,8 +21,8 @@ for (var i = 0; i < WScript.Arguments.count(); i++) {
   var sid;
   var objRecordSet;
   
-  username     = WScript.Arguments(i);
-  sid          = get_aduser_sid(username);
+  username = WScript.Arguments(i);
+  sid      = get_aduser_sid(username);
   if (sid == null) {
     WScript.Echo(username + " is not found in directory.");
     continue;
@@ -34,8 +34,7 @@ for (var i = 0; i < WScript.Arguments.count(); i++) {
     WScript.Echo("Can't connect Active Directory server.");
     WScript.Quit(1);
   }
-                                                                                                                 
-  WScript.Echo(username + " (" + sid + ") joined " + objRecordSet.RecordCount + " computer(s).");
+  
   if (objRecordSet.RecordCount > 0) {
     objRecordSet.MoveFirst;
     while (! objRecordSet.EOF) {
@@ -64,7 +63,7 @@ function get_aduser_sid(username) {
   }
   return sid;
 }
-  
+
 
 function search_computer_account_by_creator_sid(sid) {
   var objConnection;
