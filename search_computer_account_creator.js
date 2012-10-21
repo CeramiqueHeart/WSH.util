@@ -54,8 +54,7 @@ function get_aduser_sid(username) {
   var sid;
   
   objWMI = GetObject("winmgmts:");
-//  result = objWMI.ExecQuery("SELECT * FROM Win32_UserAccount WHERE LocalAccount = False AND Name = '" + username + "'");
-  result = objWMI.ExecQuery("SELECT * FROM Win32_UserAccount WHERE LocalAccount = True AND Name = '" + username + "'");
+  result = objWMI.ExecQuery("SELECT * FROM Win32_UserAccount WHERE LocalAccount = False AND Name = '" + username + "'");
 
   // 'result' should have 1 (exist) or 0 (not exist) item.
   if (result.count == 0) {
